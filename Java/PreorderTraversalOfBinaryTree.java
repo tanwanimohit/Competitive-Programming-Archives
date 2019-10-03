@@ -28,8 +28,7 @@ public class Main {
     bt.root.right.right = new BinaryTree.TreeNode("F");
 
     // visitng nodes in preOrder traversal
-    System.out.println("printing nodes of a binary tree in preOrder 
-                        using recursion");
+    System.out.println("printing nodes of a binary tree in preOrder using recursion");
     bt.preOrder();
 
   }
