@@ -1,6 +1,6 @@
 # Hacktober-Fest-19
 
-A repo for Hacktober-Fest. This repo will contains random programs in different languages.
+This repo contains competitive Coding programs in different languages.
 
 Hello Guys, Hacktober is here..
 
