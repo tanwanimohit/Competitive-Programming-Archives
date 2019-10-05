@@ -15,5 +15,3 @@ Hello Guys, Hacktober is here..
 Share the Repo with your Friends.
 
 Thankyou.
-
-Making minor change to README
