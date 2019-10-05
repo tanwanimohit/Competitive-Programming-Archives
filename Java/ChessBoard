@@ -1,0 +1,36 @@
+public class ChessBoard {
+    public static void main(String[] args) {
+        boolean board[][] = new boolean[8][8]; // define array with two dimensions: one dimension for the rows and one for the columns
+
+        /* initialize array with two nested for loops: One for even numbers and one for odd numbers
+         */
+        for (int i = 0; i < board.length; i += 2) {
+            for (int j = 0; j < board.length; j += 2) {
+                board[i][j] = true;
+            }
+        }
+
+        for (int i = 1; i < board.length; i += 2) {
+            for (int j = 1; j < board.length; j += 2) {
+                board[i][j] = true;
+            }
+        }
+
+        /*Print result of the boolean array: For value true print x, for false print o
+         */
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (board[i][j] == true) {
+                    System.out.print("x");
+                }else{
+                    System.out.print("o");
+                }
+                System.out.print("\t");
+            }
+            System.out.println();
+        }
+
+    }
+}
+
