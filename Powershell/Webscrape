@@ -1,0 +1,53 @@
+#Edit this to change the string to web scrape for
+$PCPart =  "Monitor]"
+#Edit this to change the email address to send alerts to
+$EmailAddress = "mail@adress.here"
+
+#Collect information from web page
+$data = invoke-webrequest -uri "https://www.reddit.com/r/buildapcsales/new/"
+
+#filter out headers and links
+$Sales = $data.ParsedHtml.all.tags("h2") | ForEach-Object -MemberName innertext
+$Links = $data.ParsedHtml.all.tags("a")  | Where{ $_.className -eq ‘b5szba-0 fbxLDD’ }| ForEach-Object -MemberName href
+
+#create table including the headers and links
+Foreach ($Sale in $Sales)
+    {
+    $index = $sales.IndexOf($sale)
+    $row = new-object -TypeName psobject
+    $row | Add-Member -MemberType NoteProperty -Name Sale -Value $sale
+    $row | Add-member -MemberType NoteProperty -Name Link -Value $links[$index]
+    [array]$table += $row
+    }
+
+
+
+
+#analyze table for any deals that include the PC Part string we are looking for
+If ($table.Sale -match $PCPart)
+    {
+    $SaletoCheck = $table | where-object {$_.sale -match $PCPart}
+    ForEach($sale in $SaletoCheck)
+        {
+            if ((Get-Content C:\scripts\SaleDb.txt) -notcontains $sale.link)
+            {
+                #Save link to text file so we don't send the same deal twice
+                $sale.link | out-file C:\scripts\SaleDb.txt -Append
+
+                #obtain password for gmail account from encrypted text file
+                $password = Get-Content "C:\Scripts\aespw.txt" | ConvertTo-SecureString 
+                $credential = New-Object System.Management.Automation.PsCredential("lukeautoscript@gmail.com",$password)
+
+                $props = @{
+                    From = "lukeautoscript@gmail.com" 
+                    To = $EmailAddress
+                    Subject = $sale.sale
+                    Body = $sale.link
+                    SMTPServer = "smtp.gmail.com"
+                    Port = "587"
+                    Credential = $credential
+                    }
+                Send-MailMessage @props -UseSsl
+              }
+        }
+    } 
