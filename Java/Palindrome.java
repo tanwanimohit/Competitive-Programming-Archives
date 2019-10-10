@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- *  a Java program to reverse a string.
+ *  a Java program to check if the inputted string is the same backwards
  */
 public class Palindrome {
     public static void main(String[] args) {
