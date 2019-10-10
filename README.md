@@ -8,9 +8,9 @@ Hello Guys, Hacktober is here..
 
 - Fork this Repo.
 - Make a Language Folder (Ex. Java, Don't make it, if already exists)
-- Make file inside that folder and add your code. (add any code Like sorting algo or any compeitive program)
+- Make file inside that folder and add your code. (add any code Like sorting algo or any competitive program)
 - Make a PR
-- Star the Repo, That's it.
+- Start the Repo, That's it.
  
 Share the Repo with your Friends.
 
