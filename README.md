@@ -1,10 +1,8 @@
-# Hacktober-Fest-19
+# Competitive Programming Archives
 
 This repo contains competitive Coding programs in different languages.
 
-Hello Guys, Hacktober is here..
-
-**What can you do?**
+**How to Contribute**
 
 - Fork this Repo.
 - Make a Language Folder (Ex. Java, Don't make it, if already exists)
